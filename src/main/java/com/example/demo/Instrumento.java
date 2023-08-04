@@ -12,15 +12,17 @@ public class Instrumento {
 	private @Id @GeneratedValue Long id;
 	private String nombre;
 	private String categoria;
-	private String description;
+	private String descripcion;
 
 	private Instrumento() {}
 
-	public Instrumento(String nombre, String categoria, String description) {
+	public Instrumento(String nombre, String categoria, String descripcion) {
 		this.nombre = nombre;
 		this.categoria = categoria;
-		this.description = description;
+		this.descripcion = descripcion;
 	}
+
+	
 
 	@Override
 	public boolean equals(Object o) {
@@ -30,13 +32,13 @@ public class Instrumento {
 		return Objects.equals(id, instrumento.id) &&
 			Objects.equals(nombre, instrumento.nombre) &&
 			Objects.equals(categoria, instrumento.categoria) &&
-			Objects.equals(description, instrumento.description);
+			Objects.equals(descripcion, instrumento.descripcion);
 	}
 
 	@Override
 	public int hashCode() {
 
-		return Objects.hash(id, nombre, categoria, description);
+		return Objects.hash(id, nombre, categoria, descripcion);
 	}
 
 	@Override
@@ -45,7 +47,7 @@ public class Instrumento {
 			"id=" + id +
 			", nombre='" + nombre + '\'' +
 			", categoria='" + categoria + '\'' +
-			", description='" + description + '\'' +
+			", descripcion='" + descripcion + '\'' +
 			'}';
 	}
 
@@ -73,14 +75,11 @@ public class Instrumento {
 		this.categoria = categoria;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
-
-	
-
 }

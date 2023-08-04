@@ -5,8 +5,8 @@ GET {{server}}/api/instrumentos
 
 ###
 
-POST {{server}}/api/instrumentos
+POST  {{server}}/api/instrumentos
 Content-Type: application/json
 
-{"nombre": "Bateria", "categoria": "Percusion", "description": "Esta instrumento está formada por diversas piezas"}
+{"nombre": "Bateria", "categoria":"Percusion", "descripcion": "Este instrumento está formada por diversas piezas"}
 

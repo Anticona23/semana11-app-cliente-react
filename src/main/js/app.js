@@ -18,7 +18,10 @@ class App extends React.Component {
 
 	render() { 
 		return (
-			<InstrumentoList instrumentos={this.state.instrumentos}/>
+			<>
+				<h2>Lista de Instrumentons</h2>
+				<InstrumentoList instrumentos={this.state.instrumentos}/>
+			</>
 		)
 	}
 }
@@ -49,11 +52,10 @@ class Instrumento extends React.Component{
 			<tr>
 				<td>{this.props.instrumento.nombre}</td>
 				<td>{this.props.instrumento.categoria}</td>
-				<td>{this.props.instrumento.description}</td>
+				<td>{this.props.instrumento.descripcion}</td>
 			</tr>
 		)
 	}
 }
-
 
 ReactDOM.render(<App />, document.getElementById('react'))
