@@ -1,0 +1,12 @@
+@server = https://psychic-space-palm-tree-jxpjr7vjprgh54w4-8080.app.github.dev
+###
+
+GET {{server}}/api/instrumentos
+
+###
+
+POST {{server}}/api/instrumentos
+Content-Type: application/json
+
+{"nombre": "Bateria", "categoria": "Percusion", "description": "Esta instrumento está formada por diversas piezas"}
+
