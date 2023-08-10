@@ -34105,8 +34105,9 @@ var App = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, App);
     _this = _super.call(this, props);
     _this.state = {
-      instrumentos: []
-    };
+      instrumentos: [],
+      musicos: []
+    }; //solo se añade
     return _this;
   }
   _createClass(App, [{
@@ -34121,17 +34122,29 @@ var App = /*#__PURE__*/function (_React$Component) {
           instrumentos: response.entity._embedded.instrumentos
         });
       });
+
+      //Ruta para listar a los musicos
+      client({
+        method: 'GET',
+        path: '/api/musicos'
+      }).done(function (response) {
+        _this2.setState({
+          musicos: response.entity._embedded.musicos
+        });
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "instrumentos"), /*#__PURE__*/React.createElement(InstrumentoList, {
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Lista de Instrumentons"), /*#__PURE__*/React.createElement(InstrumentoList, {
         instrumentos: this.state.instrumentos
+      }), /*#__PURE__*/React.createElement("hr", null), "//Mostando la lsiata de musicos", /*#__PURE__*/React.createElement("h2", null, "Lista de Musicos"), /*#__PURE__*/React.createElement(MusicoList, {
+        musicos: this.state.musicos
       }));
     }
   }]);
   return App;
-}(React.Component);
+}(React.Component); //Listando Instrumento
 var InstrumentoList = /*#__PURE__*/function (_React$Component2) {
   _inherits(InstrumentoList, _React$Component2);
   var _super2 = _createSuper(InstrumentoList);
@@ -34152,13 +34165,34 @@ var InstrumentoList = /*#__PURE__*/function (_React$Component2) {
     }
   }]);
   return InstrumentoList;
-}(React.Component);
-var Instrumento = /*#__PURE__*/function (_React$Component3) {
-  _inherits(Instrumento, _React$Component3);
-  var _super3 = _createSuper(Instrumento);
+}(React.Component); //Listando Musico
+var MusicoList = /*#__PURE__*/function (_React$Component3) {
+  _inherits(MusicoList, _React$Component3);
+  var _super3 = _createSuper(MusicoList);
+  function MusicoList() {
+    _classCallCheck(this, MusicoList);
+    return _super3.apply(this, arguments);
+  }
+  _createClass(MusicoList, [{
+    key: "render",
+    value: function render() {
+      var musicos = this.props.musicos.map(function (musico) {
+        return /*#__PURE__*/React.createElement(Musico, {
+          key: musico._links.self.href,
+          musico: musico
+        });
+      });
+      return /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Nombre")), musicos));
+    }
+  }]);
+  return MusicoList;
+}(React.Component); //Mostrando Instrumento
+var Instrumento = /*#__PURE__*/function (_React$Component4) {
+  _inherits(Instrumento, _React$Component4);
+  var _super4 = _createSuper(Instrumento);
   function Instrumento() {
     _classCallCheck(this, Instrumento);
-    return _super3.apply(this, arguments);
+    return _super4.apply(this, arguments);
   }
   _createClass(Instrumento, [{
     key: "render",
@@ -34167,6 +34201,21 @@ var Instrumento = /*#__PURE__*/function (_React$Component3) {
     }
   }]);
   return Instrumento;
+}(React.Component); //Mostrando Musico
+var Musico = /*#__PURE__*/function (_React$Component5) {
+  _inherits(Musico, _React$Component5);
+  var _super5 = _createSuper(Musico);
+  function Musico() {
+    _classCallCheck(this, Musico);
+    return _super5.apply(this, arguments);
+  }
+  _createClass(Musico, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.musico.nombre));
+    }
+  }]);
+  return Musico;
 }(React.Component);
 ReactDOM.render( /*#__PURE__*/React.createElement(App, null), document.getElementById('react'));
 
